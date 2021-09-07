@@ -13,7 +13,7 @@ const tsify = require('tsify');
 const babelify = require('babelify');
 
 // Sass
-const gulpsass = require('gulp-sass');
+const gulpsass = require('gulp-sass')(require('sass'));
 gulpsass.compiler = require('node-sass');
 
 // Gulp

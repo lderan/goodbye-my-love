@@ -1,0 +1,13 @@
+{
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts"],
+    "compilerOptions": {
+      "target": "es6",
+      "module": "commonjs",
+      "moduleResolution": "node",
+      "types": [
+        "@league-of-foundry-developers/foundry-vtt-types",
+        "node"
+      ]
+    }
+  }
