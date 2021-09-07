@@ -20,7 +20,7 @@
       "dist/bundle.js"
     ],
     "styles": [
-      "dist/bundle.css"
+      "dist/main.css"
     ],
     "packs": [
     ],

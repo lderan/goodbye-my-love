@@ -16,6 +16,9 @@ const babelify = require('babelify');
 const gulpsass = require('gulp-sass')(require('sass'));
 gulpsass.compiler = require('node-sass');
 
+const postcss = require('gulp-postcss'); //For Compiling tailwind utilities with tailwind config
+const tailwindcss = require('tailwindcss'); 
+
 // Gulp
 const gulp = require('gulp');
 const source = require('vinyl-source-stream');
@@ -129,8 +132,11 @@ async function watch() {
  */
 async function buildSass() {
     return gulp
-        .src('src/scss/main.scss')
-        .pipe(gulpsass().on('error', gulpsass.logError))
+        .src('src/css/main.css')
+        .pipe(postcss([
+            tailwindcss("./tailwind.config.js"),
+            require('autoprefixer'),
+          ]))
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(destFolder));
