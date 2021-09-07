@@ -1,0 +1,46 @@
+{
+    "name": "good-bye-my-love",
+    "title": "Goodbye My Love",
+    "description": "Game of love and hope from the depths of sea to the void of space",
+    "version": "0.0.1",
+    "templateVersion": 1,
+    "author": "Thomas Molloy",
+    "authors": [
+      {
+      "name": "Thomas Molloy",
+      "email": "tom.j.molloy@gmail.com",
+      "discord": "Tom#2199"
+     }
+    ],
+    "compatibleCoreVersion": "0.8.9",
+    "minimumCoreVersion":"0.8.0",
+    "scripts": [
+    ],
+    "esmodules": [
+      "dist/bundle.js"
+    ],
+    "styles": [
+      "dist/bundle.css"
+    ],
+    "packs": [
+    ],
+    "dependencies": [
+  
+    ],
+    "languages": [      
+        {
+          "lang": "en",
+          "name": "English",
+          "path": "dist/locale/en/config.json"
+        }
+    ],
+    "socket": false,
+    "initiative": "",
+    "gridDistance": 1,
+    "gridUnits": "m",
+    "primaryTokenAttribute": "hope",
+    "secondaryTokenAttribute": "despair",
+    "url": "https://github.com/lderan/goodbye-my-love/",
+    "manifest": "https://github.com/lderan/goodbye-my-love/system-staging.json",
+    "download": "https://github.com/lderan/goodbye-my-love/shadowrun6-eden-staging.zip"
+}
