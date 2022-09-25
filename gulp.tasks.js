@@ -99,7 +99,7 @@ async function watch() {
     watch('src/templates/**/*', 'templates');
     watch('locale/**/*', 'locale');
 
-    gulp.watch('src/**/*.scss').on('change', async () => await buildSass());
+    gulp.watch('src/**/*.css').on('change', async () => await buildSass());
 
     // Watchify setup
     const watchArgs = assign({}, watchify.args, baseArgs);

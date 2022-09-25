@@ -45,7 +45,6 @@ class ActorSheetPC extends GBMLActorSheet_1.GBMLActorSheet {
             template: "systems/good-bye-my-love/dist/templates/actor/character.html",
             width: 830,
             height: 900,
-            viewPermission: CONST.ENTITY_PERMISSIONS.OBSERVER,
             closeOnSubmit: false,
             submitOnChange: true,
             submitOnClose: true,
@@ -68,6 +67,15 @@ class ActorSheetPC extends GBMLActorSheet_1.GBMLActorSheet {
 exports.ActorSheetPC = ActorSheetPC;
 },{"./GBMLActorSheet":3}],3:[function(require,module,exports){
 "use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.GBMLActorSheet = void 0;
 /**
@@ -80,6 +88,30 @@ class GBMLActorSheet extends ActorSheet {
         let data = super.getData();
         return data;
     }
+    rollSkill(event) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const dice = event.currentTarget.dataset.die;
+            const diceName = event.currentTarget.dataset.name;
+            const tn = event.currentTarget.dataset.tn;
+            let r = new Roll('1' + dice, {});
+            let label = 'Rolling ';
+            if (diceName == "classDie") {
+                label += '<strong>Class die!</strong>';
+            }
+            else {
+                label += diceName;
+            }
+            if (this.actor.system[diceName]) {
+                return;
+            }
+            // Execute the roll
+            yield r.evaluate({ async: true });
+            r.toMessage({
+                speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+                flavor: label
+            });
+        });
+    }
     /**
      * Activate event listeners using the prepared sheet HTML
      * @param html {HTML}   The prepared HTML object ready to be rendered into the DOM
@@ -87,10 +119,15 @@ class GBMLActorSheet extends ActorSheet {
     activateListeners(html) {
         // Owner Only Listeners
         if (this.actor.owner) {
+            console.log("woo");
         }
         else {
             html.find(".rollable").each((i, el) => el.classList.remove("rollable"));
         }
+        // rolls
+        html.find('.click-roll').click((event) => __awaiter(this, void 0, void 0, function* () {
+            this.rollSkill(event);
+        }));
         // Handle default listeners last so system listeners are triggered first
         super.activateListeners(html);
     }

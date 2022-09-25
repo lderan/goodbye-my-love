@@ -1,11 +1,11 @@
 import { GBMLActorSheet } from "./GBMLActorSheet";
 
-/** 
+/**
  * Extend the basic ActorSheet with some very simple modifications
- * 
+ *
  */
 export class ActorSheetPC extends GBMLActorSheet {
- 
+
     /**
      * Extend and override the default options used by the 5e Actor Sheet
      * @returns {Object}
@@ -16,7 +16,6 @@ export class ActorSheetPC extends GBMLActorSheet {
 			template: "systems/good-bye-my-love/dist/templates/actor/character.html",
 			width: 830,
 			height: 900,
-			viewPermission: CONST.ENTITY_PERMISSIONS.OBSERVER,
 			closeOnSubmit: false,
 			submitOnChange: true,
 			submitOnClose: true,
@@ -36,4 +35,4 @@ export class ActorSheetPC extends GBMLActorSheet {
 		});
 	}
 
-} 
+}
