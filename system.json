@@ -30,7 +30,7 @@
   "secondaryTokenAttribute": "despair",
   "url": "https://github.com/lderan/goodbye-my-love/",
   "manifest": "https://raw.githubusercontent.com/lderan/goodbye-my-love/main/system.json",
-  "download": "https://github.com/lderan/goodbye-my-love/goodbye-my-love.zip",
+  "download": "https://github.com/lderan/goodbye-my-love/archive/refs/tags/release.zip",
   "id": "good-bye-my-love",
   "compatibility": {
     "minimum": "10",
